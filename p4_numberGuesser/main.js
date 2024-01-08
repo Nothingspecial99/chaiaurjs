@@ -32,6 +32,11 @@ function guessSubmitted() {
             chancesElement.textContent = chances
 
             lowOrHi.textContent = msg;
+            if (chances == 0) { //so that submit and input filled are immediately disabled when chances ==0. if this if block code was not written then we would be giving 11chances. 
+                guessField.setAttribute('disabled', '')
+                submitGuessButtton.setAttribute("disabled", "")
+                lowOrHi.innerHTML = "You're out of chances.You lose :( <br>Reload to play again!";
+            }
 
         }
         else {
@@ -41,9 +46,6 @@ function guessSubmitted() {
 
     else if (isNaN(guess)) {
         lowOrHi.textContent = "Enter a valid number";
-    }
-    else {
-        lowOrHi.innerHTML = "You're out of chances.You lose :( <br>Reload to play again!";
     }
     guessField.value = ""
 
