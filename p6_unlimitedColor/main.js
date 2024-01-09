@@ -1,6 +1,6 @@
 const startButton = document.querySelector("#start")
 const stopButton = document.querySelector("#stop")
-let id = undefined
+let id
 
 
 function generateRandomColor() {
@@ -16,7 +16,10 @@ function changeBgColor() {
 }
 
 function start() {
-    id = setInterval(changeBgColor, 1000);
+    if (!id) {
+        id = setInterval(changeBgColor, 1000);
+        console.log("start")
+    }
 }
 
 function stop() {
@@ -28,7 +31,3 @@ function stop() {
 
 startButton.addEventListener("click", start)
 stopButton.addEventListener("click", stop)
-
-
-
-
